@@ -67,21 +67,26 @@ export default function PostPage({
             <MDXRemote {...source} components={components} />
           </article>
           <div className="mt-12 flex justify-end">
-            <FacebookShareButton url={socialUrl} quote={frontMatter.summary}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <span className="p-1" />
-            <TwitterShareButton url={socialUrl} title={frontMatter.summary}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <span className="p-1" />
-            <RedditShareButton url={socialUrl} title={frontMatter.summary}>
-              <RedditIcon size={32} round />
-            </RedditShareButton>
-            <span className="p-1" />
-            <LinkedinShareButton url={socialUrl}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
+            <div>
+              <p className="font-bold pb-2">Share This Post</p>
+              <div>
+                <span className="p-1" />
+                <FacebookShareButton
+                  url={socialUrl}
+                  quote={frontMatter.summary}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+                <span className="p-1" />
+                <TwitterShareButton url={socialUrl} title={frontMatter.summary}>
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+                <span className="p-1" />
+                <LinkedinShareButton url={socialUrl}>
+                  <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
+              </div>
+            </div>
           </div>
         </main>
         <div className="grid md:grid-cols-2 lg:-mx-24 mt-12">
@@ -114,14 +119,6 @@ export default function PostPage({
         </div>
       </article>
       <Footer copyrightText={globalData.footerText} />
-      <GradientBackground
-        variant="large"
-        className="absolute -top-32 opacity-30 dark:opacity-50"
-      />
-      <GradientBackground
-        variant="small"
-        className="absolute bottom-0 opacity-20 dark:opacity-10"
-      />
     </Layout>
   );
 }
