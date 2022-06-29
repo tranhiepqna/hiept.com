@@ -13,7 +13,7 @@ import ArrowIcon from '../../components/ArrowIcon';
 import CustomLink from '../../components/CustomLink';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Layout, { GradientBackground } from '../../components/Layout';
+import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import {
   FacebookShareButton,
@@ -22,8 +22,6 @@ import {
   TwitterIcon,
   LinkedinShareButton,
   LinkedinIcon,
-  RedditShareButton,
-  RedditIcon,
 } from 'next-share';
 
 // Custom components/renderers to pass to MDX.
