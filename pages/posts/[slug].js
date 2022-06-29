@@ -15,6 +15,16 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Layout, { GradientBackground } from '../../components/Layout';
 import SEO from '../../components/SEO';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditShareButton,
+  RedditIcon,
+} from 'next-share';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -34,6 +44,7 @@ export default function PostPage({
   prevPost,
   nextPost,
   globalData,
+  socialUrl,
 }) {
   return (
     <Layout>
@@ -55,6 +66,23 @@ export default function PostPage({
           <article className="prose dark:prose-dark">
             <MDXRemote {...source} components={components} />
           </article>
+          <div className="mt-12 flex justify-end">
+            <FacebookShareButton url={socialUrl} quote={frontMatter.summary}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <span className="p-1" />
+            <TwitterShareButton url={socialUrl} title={frontMatter.summary}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <span className="p-1" />
+            <RedditShareButton url={socialUrl} title={frontMatter.summary}>
+              <RedditIcon size={32} round />
+            </RedditShareButton>
+            <span className="p-1" />
+            <LinkedinShareButton url={socialUrl}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+          </div>
         </main>
         <div className="grid md:grid-cols-2 lg:-mx-24 mt-12">
           {prevPost && (
@@ -103,6 +131,7 @@ export const getStaticProps = async ({ params }) => {
   const { mdxSource, data } = await getPostBySlug(params.slug);
   const prevPost = getPreviousPostBySlug(params.slug);
   const nextPost = getNextPostBySlug(params.slug);
+  const socialUrl = `${globalData.domain}/posts/${params.slug}`;
 
   return {
     props: {
@@ -111,6 +140,7 @@ export const getStaticProps = async ({ params }) => {
       frontMatter: data,
       prevPost,
       nextPost,
+      socialUrl,
     },
   };
 };

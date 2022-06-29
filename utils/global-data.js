@@ -8,10 +8,14 @@ export const getGlobalData = () => {
   const footerText = process.env.BLOG_FOOTER_TEXT
     ? decodeURI(process.env.BLOG_FOOTER_TEXT)
     : '© 2022 All rights reserved.';
+  const domain = process.env.URL
+    ? decodeURI(process.env.URL)
+    : 'https://hiept.com';
 
   return {
     name,
     blogTitle,
     footerText,
+    domain,
   };
 };
