@@ -34,6 +34,13 @@ const components = {
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
   Head,
+  pre: (props) => <div {...props} />,
+  code: (props) => (
+    <pre
+      style={{ color: 'pink', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}
+      {...props}
+    />
+  ),
 };
 
 export default function PostPage({
