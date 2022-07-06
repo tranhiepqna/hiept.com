@@ -56,6 +56,8 @@ export default function PostPage({
       <SEO
         title={`${frontMatter.title} - ${globalData.name}`}
         description={frontMatter.description}
+        url={socialUrl}
+        image={`${globalData.domain}${frontMatter.image}`}
       />
       <Header name={globalData.name} />
       <article className="px-6 md:px-0">

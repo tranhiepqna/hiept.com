@@ -11,7 +11,12 @@ import SEO from '../components/SEO';
 export default function Index({ posts, globalData }) {
   return (
     <Layout>
-      <SEO title={globalData.name} description={globalData.blogTitle} />
+      <SEO
+        title={globalData.name}
+        description={globalData.blogTitle}
+        url={globalData.domain}
+        image={`${globalData.domain}/images/hello-world/hello.webp`}
+      />
       <Header name={globalData.name} />
       <main className="w-full">
         <h1 className="text-3xl lg:text-5xl text-center mb-12">
